@@ -1,7 +1,5 @@
-x_menu = "MENU"
-y = ""
-
 def menu():
+    x_menu = "MENU"
     print(x_menu.center(60, "="))
     opcao_menu = int(input("""DIGITE A OPÇÃO QUE DESEJA:
 [1] Depósito
@@ -23,11 +21,11 @@ def deposito(saldo, valor, /, extrato):
         saldo += valor
         extrato += f"Depósito: R$ {valor:.2f} \n"
         print("Depósito realizado!")
-        print(y.center(60, "-"))
+        
 
     else:
         print("Informe um valor válido!")
-        print(y.center(60, "-"))
+        
 
     return saldo, extrato
 
@@ -41,26 +39,26 @@ def sacar(*, saldo, valor, extrato, limite, num_saques, limite_saques):
 
     if excedeu_saldo:
         print("Operação Falhou! O saldo de sua conta bancária é insuficiente para o saque!")
-        print(y.center(60, "-"))
+        
 
     elif excedeu_limite:
         print("Operação falhou! O saque pedido é maior que o limite (R$ 500.00)")
-        print(y.center(60, "-"))
+        
 
     elif excedeu_saques:
         print("Operação falhou! Número de saques diários atingidos!")
-        print(y.center(60, "-"))
+        
 
     elif valor > 0:
         saldo -= valor
         extrato += f"Saque: R$ {valor:.2f}\n"
         num_saques += 1
         print("Saque realizado!")
-        print(y.center(60, "-"))
+        
 
     else:
         print("Operação falhou! O valor informado é inválido!")
-        print(y.center(60, "-"))
+        
 
     return saldo, extrato
 
@@ -70,8 +68,7 @@ def exibir_extrato(saldo, /, *, extrato):
     
     print("Não foram realizadas movimentações." if not extrato else extrato)
     print(f"\nSaldo: R$ {saldo:.2f}")
-    print(y.center(60, "-"))
-
+    
 def criar_usuario(usuarios):
     x = "USUÁRIO"
     print(x.center(60, "-"))
@@ -81,7 +78,6 @@ def criar_usuario(usuarios):
 
     if usuarios:
         print("Este usuário já existe!")
-        print(y.center(60, "-"))
         return
     
     nome = input("DIGITE SEU NOME COMPLETO: ")
@@ -91,13 +87,11 @@ def criar_usuario(usuarios):
     usuarios.append({"nome": nome, "data_nas": data_nas, "endereco": endereco})
 
     print("USUÁRIO CRIADO!")
-    print(y.center(60, "-"))
-
+    
 def listar_usuario(cpf, usuarios):
     x = "LISTAR USUÁRIOS"
     print(x.center(60, "="))
     usuarios_listados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
-    print(y.center(60, "-"))
     return usuarios_listados[0] if usuarios_listados else None
     
 def criar_conta(agencia, numero_conta, usuarios):
@@ -111,8 +105,7 @@ def criar_conta(agencia, numero_conta, usuarios):
         return {"agencia": agencia, "numero_conta": numero_conta, "usuarios": usuarios}
     
     print("USUÁRIO NÃO ENCONTRADO")
-    print(y.center(60,"-"))
-
+    
 def main():
 
     saldo = 0
@@ -168,7 +161,6 @@ def main():
 
         else:
             print("Opção inválida! Digite um dos quatro números que está na lista!")
-
 
 main()
 
