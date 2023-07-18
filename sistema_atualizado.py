@@ -12,10 +12,11 @@ def menu():
 """))
     return opcao_menu
 
-def deposito(saldo, valor, /, extrato):
-
+def realizar_deposito(saldo, valor, /, extrato):
     x = "DEPÓSITO"
     print(x.center(60, "-"))
+
+    valor = float(input("DIGITE O VALOR DO DEPÓSITO: "))
 
     if valor > 0:
         saldo += valor
@@ -29,9 +30,11 @@ def deposito(saldo, valor, /, extrato):
 
     return saldo, extrato
 
-def sacar(*, saldo, valor, extrato, limite, num_saques, limite_saques):
+def realizar_sacar(*, saldo, valor, extrato, limite, num_saques, limite_saques):
     x = "SAQUE"
     print(x.center(60, "-"))
+
+    valor = float(input("DIGITE O VALOR QUE DESEJA SACAR: "))
 
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
@@ -123,12 +126,12 @@ def main():
         if opcao == 1:
             valor = float(input("Digite o valor do depósito: "))
 
-            saldo, extrato = deposito(saldo, valor, extrato=extrato)
+            saldo, extrato = realizar_deposito(saldo, valor, extrato=extrato)
 
         elif opcao == 2:
             valor = float(input("Digite o valor que deseja sacar: "))
 
-            saldo, extrato = sacar(
+            saldo, extrato = realizar_sacar(
                 saldo=saldo,
                 valor=valor,
                 extrato=extrato,
